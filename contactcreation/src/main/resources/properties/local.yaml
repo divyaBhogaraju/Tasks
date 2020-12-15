@@ -1,0 +1,13 @@
+http:
+  port: "8085"
+sfdc:
+  username: ""
+  password: ""
+  security_token: ""
+  authoriztion_url: "https://login.salesforce.com/services/Soap/u/48.0"
+mysql:
+  host: "database-1.cbokjkxrkfy1.us-east-2.rds.amazonaws.com"
+  port: "3306"
+  username: "admin"
+  password: "12345678"
+  database: "test"

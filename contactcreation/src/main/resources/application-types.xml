@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<types:mule xmlns:types="http://www.mulesoft.org/schema/mule/types">
+  <types:catalog>
+    <types:type name="contacts_sample" format="csv">
+      <types:shape format="weave" example="examples/sample_mock.csv"><![CDATA[%dw 2.0
+
+type contacts_sample = Array<{|  first_name: String,   last_name: String,   eamil: String,   title: String,   department: String|}> {"isQuotedString": "false",
+"header": "true",
+"headerLineNumber": "0"}
+
+]]></types:shape>
+      <types:properties>
+        <types:property name="headerLineNumber" value="0"/>
+        <types:property name="header" value="true"/>
+        <types:property name="isQuotedString" value="false"/>
+      </types:properties>
+    </types:type>
+  </types:catalog>
+  <types:enrichment select="#04c5a887-d1f6-4b82-8bef-d345c697cf0a">
+    <types:processor-declaration>
+      <types:input-event>
+        <types:message>
+          <types:payload type="contacts_sample"/>
+        </types:message>
+      </types:input-event>
+    </types:processor-declaration>
+  </types:enrichment>
+  <types:enrichment select="#f87136fa-cda3-4b2a-8292-3e7e839adf1f">
+    <types:processor-declaration>
+      <types:input-event>
+        <types:message>
+          <types:payload type="contacts_sample[]"/>
+        </types:message>
+      </types:input-event>
+    </types:processor-declaration>
+  </types:enrichment>
+</types:mule>
